@@ -59,7 +59,7 @@ def add_figure():
                     break
             time.sleep(1)
             name = path.join("assets", "img_{}.jpg".format(len(records)))
-            picamera.capture(name)
+            camera.capture(name)
             data[str(len(records))] = value 
             records.push({"id": len(records), url: name})
             return ""
