@@ -8,11 +8,11 @@ from os import path
 app = Flask(__name__)
 
 records = [ 
-    {"id": 1, "url": "/assets/img_1.jpg"}        
+    {"id": 0, "url": "/assets/img_0.jpg"}        
 ]
 
 data = {
-    "1": "Zach's Card"     
+    "0": "Zach's Card"     
 }
 
 currentProc = None
