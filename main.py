@@ -61,7 +61,7 @@ def add_figure():
             name = path.join("assets", "img_{}.jpg".format(len(records)))
             camera.capture(name)
             data[str(len(records))] = value 
-            records.push({"id": len(records), url: name})
+            records.append({"id": len(records), url: name})
             return ""
         except Exception as e:
             print (e)
