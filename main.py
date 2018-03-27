@@ -1,11 +1,14 @@
 import time
 import json
+import nxppy
+import picamera
 from subprocess import Popen
 from threading import Thread
 from flask import Flask, request, send_from_directory
 from os import path
 
 app = Flask(__name__)
+camera = picamera.PiCamera()
 
 records = [ 
     {"id": 0, "url": "/assets/img_0.jpg"}        
@@ -42,10 +45,7 @@ def send_data():
 
 @app.route('/add')
 def add_figure():
-    import nxppy
-    import picamera
-    camera = picamera.PiCamera()
-    global records, data
+    global records, data, camera
     mifare = nxppy.Mifare()
     print("Starting")
     while True:
