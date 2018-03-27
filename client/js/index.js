@@ -20,7 +20,7 @@ ractive.on({
 			.then(() => ractive.animate("smoke", 0, {duration: 200}))
 			.then(() => ractive.set("showHelp", false))
 			.then(update),
-	"emulateMe": (id) =>
+	"emulateMe": (dunno, id) =>
 		ractive.set("showEmu", true)
 			.then(() => ractive.animate("smoke", 1, {duration: 200}))
 			.then(() => fetch(`/emu/${id}`)),
@@ -38,4 +38,3 @@ let update = () =>
 		.then(objs => ractive.set({records: objs}))
 
 update()
-
