@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ractive/1.0.0-build-99/ractive.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+		<link rel="stylesheet" href="/css/main.css">
+	</head>
+
+	<script type="application/ractive" id="record">
+<div class="record" on-click="['emulateMe', id]">
+	<img src="{{url}}" class="record-icon">
+</div>
+	</script>
+
+	<script type="application/ractive" id="main">
+
+<div class="smokescreen" style="opacity:{{smoke}};{{#if smoke==0}}display: none{{else}}display: flex{{/if}}">
+	{{#if showHelp}}
+	<div class="help">
+		<div class="alert-head">Add Device</div>
+		<div class="alert-content">
+			Please place the NFC device on the reader. It will be captured as soon as it's detected.
+		</div>
+	</div>
+	{{/if}}
+	{{#if showEmu}}
+	<div class="help">
+		<div class="alert-head">Emulation Active</div>
+		<div class="alert-content">
+			Currently emulating NFC tag. Note that you will be unable to scan anything else while this is active.
+		</div>
+		<div class="alert-button" on-click="['cancelEmu']">
+			Stop Emulation	
+		</div>
+	</div>
+	{{/if}}
+</div>
+
+<div class="record-holder">
+	<div class="header">
+		<img src="/assets/nfsee.png">
+	</div>
+	{{#each records}}{{> record this}}{{/each}} 
+	<div class="add-more" on-click="['addElement']">
+		+
+	</div>
+</div>
+	</script>
+
+	<body>
+		<div id="output"></div>
+
+		<script src="/js/index.js"></script>
+	</body>
+</html>
