@@ -53,18 +53,21 @@ def add_figure():
             val = mifare.select()
             value = ""
             for i in range(64):
-                value += mifare.read_block(i)
+                try:
+                    value += mifare.read_block(i)
+                except Exception:
+                    break
             time.sleep(1)
             name = path.join("assets", "img_{}.jpg".format(len(records)))
             picamera.capture(name)
             data[str(len(records))] = value 
             records.push({"id": len(records), url: name})
+            return ""
         except Exception as e:
             print (e)
             pass
         time.sleep(1)
     time.sleep(4)
-    return ""
 
 @app.route('/emu/<id_name>')
 def start_emulation(id_name):
